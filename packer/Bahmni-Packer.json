@@ -1,7 +1,7 @@
 {
    "variables": {
-     "aws_access_key": "AKIA2TJMAALJCOPP3V6L",
-     "aws_secret_key": "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",
+     "aws_access_key": "",
+     "aws_secret_key": "",
      "region"  : "ap-south-1",
      "ami-ec2" : "ami-016ec067d44808c4f",
      "username": "centos",
