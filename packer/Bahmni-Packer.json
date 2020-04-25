@@ -1,7 +1,7 @@
 {
    "variables": {
-     "aws_access_key": "",
-     "aws_secret_key": "",
+     "aws_access_key": "AKIA2TJMAALJCOPP3V6L",
+     "aws_secret_key": "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",
      "region"  : "ap-south-1",
      "ami-ec2" : "ami-016ec067d44808c4f",
      "username": "centos",
@@ -17,7 +17,7 @@
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "{{user `region`}}",
     "source_ami": "{{user `ami-ec2`}}",
-    "instance_type": "t2.micro",
+    "instance_type": "t2.large",
     "ssh_username": "centos",
     "ami_name": "packer-bahmni-92 {{timestamp}}",
     "ami_description": "{{user `purpose`}}",
@@ -31,13 +31,12 @@
         "volume_type": "gp2",
         "delete_on_termination": false
       }]
-  },
-  
+  }
   ],
   "provisioners": [{
     "type": "shell",
-    "scripts": [
-      "scripts/bootstrap.sh"
-    ]
+    "scripts": ["scripts/bootstrap.sh"],
+    "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
+    "pause_before": "10s"
   }]
 }
