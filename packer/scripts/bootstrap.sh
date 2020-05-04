@@ -16,13 +16,8 @@ fi
 #Installing zlib as it is a dependancy ( -q is for quite and -y is for input yes )
 #Block to validate the rpm installation status
 yum list installed  | grep bahmni-installer >/dev/null
-if [ $? -eq 0 ]; then
     echo "*************************************************************************************************************************" | tee -a $file
-    echo "Zlib rpm package  is already installed" | tee -a $file
-    echo "*************************************************************************************************************************" | tee -a $file
-else
-    echo "*************************************************************************************************************************" | tee -a $file
-    echo "Zlib Package  is NOT installed Installing the zlib package............." | tee -a $file
+    echo "Installing the zlib package............." | tee -a $file
     echo "*************************************************************************************************************************"
     yum install https://kojipkgs.fedoraproject.org//packages/zlib/1.2.11/19.fc30/x86_64/zlib-1.2.11-19.fc30.x86_64.rpm -q -y
     echo "*************************************************************************************************************************" | tee -a $file
@@ -30,7 +25,7 @@ else
     echo "*************************************************************************************************************************" | tee -a $file
     yum list installed  | grep zlib | tee -a $file
     echo "*************************************************************************************************************************" | tee -a $file
-fi
+
 
 # Install the bahmni command line program (Choose the version you want).
 #check for bahmni rpm inst
@@ -62,6 +57,19 @@ echo "**************************************************************************
 echo "export BAHMNI_INVENTORY=local" >> ~/.bashrc
 source ~/.bashrc
 
+echo "*************************************************************************************************************************" | tee -a $file
+echo "Installing ansible compatible version" | tee -a $file
+echo "*************************************************************************************************************************" | tee -a $file
+
+sudo yum install python-pip python-devel python -y  > /dev/null 2>&1
+sudo pip install pip --upgrade > /dev/null 2>&1
+sudo pip install ansible==2.4.2.0 > /dev/null 2>&1
+
+echo "*************************************************************************************************************************" | tee -a $file
+echo "Installation ansible Completed" | tee -a $file
+ansible --version | tee -a $file
+echo "*************************************************************************************************************************" | tee -a $file
+
 
 # Now fire the installer
 echo "*************************************************************************************************************************" | tee -a $file
@@ -74,7 +82,6 @@ echo "Bahmni Modules installation completed" | tee -a $file
 echo "*************************************************************************************************************************" | tee -a $file
 yum list installed | grep bahmni | tee -a $file
 echo "*************************************************************************************************************************"  | tee -a $file
-
 
 #Take the backup of openmrs database
 echo "*************************************************************************************************************************" | tee -a $file
