@@ -53,9 +53,9 @@ echo "**************************************************************************
 echo "Installing ansible compatible version" | tee
 echo "*************************************************************************************************************************" | tee
 
-sudo yum install python-pip python-devel python -y
-sudo pip install pip --upgrade
-sudo pip install ansible==2.4.2.0
+sudo yum install python-pip python-devel python -y > /dev/null 2>&1
+sudo pip install pip --upgrade > /dev/null 2>&1
+sudo pip install ansible==2.4.2.0 > /dev/null 2>&1
 
 echo "*************************************************************************************************************************" | tee
 echo "Installation ansible Completed" | tee
@@ -67,7 +67,7 @@ echo "**************************************************************************
 echo "*************************************************************************************************************************" | tee
 echo "Installing Bahmni Modules.................." | tee
 echo "*************************************************************************************************************************" | tee
-bahmni install
+bahmni install > /dev/null 2>&1
 echo "*************************************************************************************************************************" | tee
 # Verify installed components using the command:
 echo "Bahmni Modules installation completed" | tee
@@ -94,7 +94,7 @@ echo "**************************************************************************
   echo "Restoring with Vanila database base dump" | tee
 echo "*************************************************************************************************************************" | tee
 cd $backupfiledir
-wget https://bahmnidumps.s3.ap-south-1.amazonaws.com/openmrs_basedump.sql.gz -q
+wget https://github.com/bahmni-msf/Bahmni-SetupFiles/blob/master/openmrs_basedump.sql.gz -q
 echo "*************************************************************************************************************************" | tee
 bahmni -i local restore --restore_type=db --options=openmrs --strategy=dump   --restore_point=openmrs_basedump.sql.gz > /dev/null 2>&1
 if [ $? -eq 0 ]

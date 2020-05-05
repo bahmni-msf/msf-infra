@@ -1,25 +1,31 @@
 {
-   "variables": {
-     "aws_access_key": "",
-     "aws_secret_key": "",
-     "region"  : "ap-south-1",
-     "ami-ec2" : "ami-016ec067d44808c4f",
-     "username": "centos",
-     "ami_description": "CentOS-7",
-     "purpose": "Base CentOS 7 Image for Bahmni",
-     "os": "Linux",
-     "os_version": "CentOS",
-     "release": "7"
-   },
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "region"  : "ap-south-1",
+    "ami-ec2" : "ami-016ec067d44808c4f",
+    "username": "centos",
+    "ami_description": "CentOS-7",
+    "purpose": "Base CentOS 7 Image for Bahmni",
+    "os": "Linux",
+    "os_version": "CentOS",
+    "release": "7"
+  },
   "builders": [{
     "type": "amazon-ebs",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "{{user `region`}}",
     "source_ami": "{{user `ami-ec2`}}",
+    "run_tags": {
+      "Name": "Bahmni"
+    },
+    "tags": {
+      "Name": "Bahmni"
+    },
     "instance_type": "t2.large",
     "ssh_username": "centos",
-    "ami_name": "packer-bahmni-92 {{timestamp}}",
+    "ami_name": "Bahmni 0.92 {{isotime | clean_resource_name}}",
     "ami_description": "{{user `purpose`}}",
     "name" : "Bahmni92-CentOS-7",
     "ami_virtualization_type": "hvm",
