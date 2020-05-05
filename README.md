@@ -13,12 +13,11 @@ The advantage of packer is, if in case there is an additional software that is r
 
 <b>Creating Image Procedure</b>:-
 
-1. Clone the required files <b>"bahmni-packer.json" </b> and <b>"vars.json" </b>. 
-2. Update the access key and secret key in the <b>"vars.json" </b>.
-3. Copy the Scripts directory which includes the <b>bootsrap.sh </b> script.
+1. Clone the required files <b>"Bahmni-Packer.json" </b> and <b> scripts/bootstrap.sh </b> files.
+2. Update the access key and secret key in the <b>"Bahmni-Packer.json" </b> file.
 4. Run command <b> "packer validate bahmni-packer.json" </b> to validate the packer file.
 5. Run command <b> "packer inspect bahmni-packer.json" </b> to check the specifications with which the image is going to get created.
-6. Run command <b> "packer build -var-file=vars.json bahmni-packer.json" </b> to build the image.
+6. Run command <b> "packer build bahmni-packer.json" </b> to build the image.
 7. Check respective AWS account if the Screenshot and AMI is created or not.
 
 ### Terraform
