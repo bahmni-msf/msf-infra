@@ -1,0 +1,8 @@
+AWS_ACCESS_KEY = ""
+AWS_SECRET_KEY = ""
+AMI_ID = ""
+AWS_REGION = ""
+INSTANCE_TYPE = ""
+ZONE_ID = ""
+DOMAIN_NAME = ""
+
