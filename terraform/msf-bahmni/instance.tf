@@ -1,12 +1,12 @@
 resource "aws_instance" "bahmni" {
   instance_type = var.INSTANCE_TYPE
-  ami = var.AMI_ID
+  ami           = var.AMI_ID
   tags = {
-    Name = "Bahmni-Image-2"
+    Name = "Bahmni-Image-3"
   }
-  key_name = aws_key_pair.mykey.key_name
+  key_name = aws_key_pair.mynewkey.key_name
   provisioner "file" {
-    source = "script.sh"
+    source      = "script.sh"
     destination = "/tmp/script.sh"
   }
   provisioner "remote-exec" {
@@ -18,9 +18,9 @@ resource "aws_instance" "bahmni" {
     ]
   }
   connection {
-    host = coalesce(self.public_ip, self.private_ip)
-    type = "ssh"
-    user = var.INSTANCE_USERNAME
+    host        = coalesce(self.public_ip, self.private_ip)
+    type        = "ssh"
+    user        = var.INSTANCE_USERNAME
     private_key = file(var.PATH_TO_PRIVATE_KEY)
   }
 }
