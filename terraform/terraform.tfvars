@@ -1,0 +1,10 @@
+AWS_ACCESS_KEY = ""
+AWS_SECRET_KEY = ""
+AWS_REGION = "ap-south-1"
+AMI = ""
+INSTANCE_TYPE = "t2.large"
+KEY_NAME = ""
+INSTANCE_NAME = "Bahmni-Implementation-QA"
+PATH_TO_PRIVATE_KEY= ""
+DEFAULT_USER="centos"
+
