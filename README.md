@@ -37,8 +37,11 @@ copy the binary (terraform) file to /usr/local/sbin, so that we could invoke ter
  
 3. We need to update the values in the <b> terraform.tfvars </b> file with corresponding AWS access key, secret key and desired region, AMI we could use the AMI that we have created through packer instance.
 4. The important parameter in the <b>terraform.tfvars</b> file is the key pair, we need to choose a key pair that we want to associate with newly spinning up instance. we need to get the .pem extension file in to local machine from where the config is running and update as below example.
+
 KEY_NAME = "standard" ( No need to mention path and pem extension )
+
 PATH_TO_PRIVATE_KEY= "/Users/*****/Documents/Terraform/test/standard.pem" ( Need to mention path and pem extension )
+
 5. when ever we are running terraform in a new directory
 initiate the terraform so that the provider dependancies would be imported
 Run
