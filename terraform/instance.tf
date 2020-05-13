@@ -2,7 +2,7 @@ resource "aws_instance" "bahmni" {
   instance_type = var.INSTANCE_TYPE
   ami           = var.AMI_ID
   tags = {
-    Name = "Bahmni-Image-3"
+    Name = "Bahmni-Implementation-QA/UAT"
   }
   key_name = aws_key_pair.mynewkey.key_name
   provisioner "file" {

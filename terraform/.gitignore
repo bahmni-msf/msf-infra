@@ -1,2 +1,3 @@
 # Directories
 **/.terraform/*
+terraform.tfvars
