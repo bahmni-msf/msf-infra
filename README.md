@@ -33,7 +33,8 @@ copy the binary (terraform) file to /usr/local/sbin, so that we could invoke ter
 2. Clone the Terraform directory which consists of 3 files
  <b>instance.tf </b>       --> includes variable declaration, provider information, resource provisioning configuration.
  <b>bahmni_initial_setup_script.sh</b>---> Includes all the dependant/desired application setup in the instance.
- <b>terraform.tfvars</b> -----> This is the file where we would include the variable values that will get passed as parameters 
+ <b>terraform.tfvars</b> -----> This is the file where we would include the variable values that will get passed as parameters. 
+ 
 3. We need to update the values in the <b> terraform.tfvars </b> file with corresponding AWS access key, secret key and desired region, AMI we could use the AMI that we have created through packer instance.
 4. The important parameter in the <b>terraform.tfvars</b> file is the key pair, we need to choose a key pair that we want to associate with newly spinning up instance. we need to get the .pem extension file in to local machine from where the config is running and update as below example.
 KEY_NAME = "standard" ( No need to mention path and pem extension )
