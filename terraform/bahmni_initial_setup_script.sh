@@ -10,7 +10,6 @@ wget https://github.com/Bahmni/default-config/archive/master.zip -q && unzip mas
 curl -L --silent https://raw.githubusercontent.com/bahmni-msf/Bahmni-SetupFiles/master/setup.yml >  /etc/bahmni-installer/setup.yml
 echo "Below is the bahmni setup file"
 echo "*************************************************************************************************************************"
-cat /etc/bahmni-installer/setup.yml
 echo "*************************************************************************************************************************"
 #Take the backup of openmrs database
 echo "*************************************************************************************************************************"
@@ -22,7 +21,6 @@ curl -L --silent https://raw.githubusercontent.com/bahmni-msf/Bahmni-SetupFiles/
 #You can also configure custom inventory file instead of local.
 echo "export BAHMNI_INVENTORY=inventory" >> ~/.bashrc
 source ~/.bashrc
-
 bahmni  backup --backup_type=db --options=openmrs > /dev/null 2>&1
 backupfiledir="/data/openmrs"
 if [ -d $backupfiledir ]; then
@@ -34,7 +32,7 @@ if [ -d $backupfiledir ]; then
 fi
 echo "*************************************************************************************************************************"
 echo "Remove openmrs, bahmni-emr, bahmni-web modules."
-yum remove bahmni-openmrs bahmni-emr bahmni-web -y -q
+yum remove openmrs bahmni-emr bahmni-web -y -q
 echo "*******************************************************************s******************************************************"
 echo "openmrs, bahmni-emr, bahmni-web modules removed"
 echo "*************************************************************************************************************************"
