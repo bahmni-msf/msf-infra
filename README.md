@@ -11,14 +11,26 @@ Packer configuration file includes three blocks, one for defining the variables 
 With the help of packer we are able to create Amazon Machine Image which include bahmni latest version 0.92 on centOS 7.6.
 The advantage of packer is, if in case there is an additional software that is required to be imbibed in the Image or any additional software, dependant software need to be installed we could specify that in the bootsrap.sh file.
 
-<b>Creating Image Procedure</b>:-
+#### Creating Image Procedure
 
-1. Clone the required files <b>"image.json" </b> and <b> scripts/bootstrap.sh </b> files.
-2. Update the access key and secret key in the <b>"image.json" </b> file.
-4. Run command <b> "packer validate image.json" </b> to validate the packer file.
-5. Run command <b> "packer inspect image.json" </b> to check the specifications with which the image is going to get created.
-6. Run command <b> "packer build image.json" </b> to build the image.
-7. Check respective AWS account if the Screenshot and AMI is created or not.
+```
+# 1. Clone the msf-infra reposiroty
+$ git clone git@github.com:bahmni-msf/msf-infra.git
+$ cd msf-infra/packer
+
+# 2. Update the AWS access key and secret key in the `image.json`  file.
+
+# 3. Validate the packer file
+$ packer inspect image.json
+
+# 4. Check the specifications with which the image is going to get created
+$ packer inspect image.json
+
+# 5. Build the image (AMI)
+$ packer build image.json
+
+# 6. Check respective AWS account if the AMI is created or not.
+```
 
 ### Terraform
 [Terraform](https://www.terraform.io/) is used to create, manage, and update various relevant AWS infrastructure resources (such as EC2, S3, Route53 etc.) for the different environments.
