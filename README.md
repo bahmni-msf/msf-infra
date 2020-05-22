@@ -37,30 +37,39 @@ $ packer build image.json
 
 There are three files defined in the terraform directory, the main intention of terraform config files are to provision new EC2 instances with default VPC and default Security group. The terraform helps us to retain the state of the instance even if there is any manual change done through console. The time which we spend up on spinning up the instances also brought down with help of </b> Terraform </b>
 
-<b> Steps to run Terraform config </b>
+#### Installation Steps
+Install Terraform in your local machine.(Ref: [link](https://learn.hashicorp.com/terraform/getting-started/install.html))
+```
+$ brew install terraform
+```
+#### Folder Structure
+Terraform directory which consists of 3 files:
 
-1. Install Terraform in your local machine 
-brew install terraform
-copy the binary (terraform) file to /usr/local/sbin, so that we could invoke terraform from any where.
-2. Clone the Terraform directory which consists of 3 files
- <b>instance.tf </b>       --> includes variable declaration, provider information, resource provisioning configuration.
- <b>bahmni_initial_setup_script.sh</b>---> Includes all the dependant/desired application setup in the instance.
- <b>terraform.tfvars</b> -----> This is the file where we would include the variable values that will get passed as parameters. 
- 
-3. We need to update the values in the <b> terraform.tfvars </b> file with corresponding AWS access key, secret key and desired region, AMI we could use the AMI that we have created through packer instance.
-4. The important parameter in the <b>terraform.tfvars</b> file is the key pair, we need to choose a key pair that we want to associate with newly spinning up instance. we need to get the .pem extension file in to local machine from where the config is running and update as below example.
+ `instance.tf` -  includes variable declaration, provider information, resource provisioning configuration.
+
+ `bahmni_initial_setup_script.sh`  - Includes all the dependant/desired application setup in the instance.
+
+ `terraform.tfvars` -  This is the file where we would include the variable values that will get passed as parameters.
+
+#### Steps to run Terraform config
+
+```
+# 1. Clone the repository
+$ git clone git@github.com:bahmni-msf/msf-infra.git
+$ cd msf-infra/terraform
+
+# 2. Update the values in the `terraform.tfvars`  file with corresponding AWS access key, secret key and desired region, AMI we could use the AMI that we have created through packer instance.
+
+# 3. The important parameter in the `terraform.tfvars` file is the key pair, we need to choose a key pair that we want to associate with newly spinning up instance. we need to get the .pem extension file in to local machine from where the config is running and update as below example.
 
 KEY_NAME = "standard" ( No need to mention path and pem extension )
 
 PATH_TO_PRIVATE_KEY= "/Users/*****/Documents/Terraform/test/standard.pem" ( Need to mention path and pem extension )
 
-5. when ever we are running terraform in a new directory
-initiate the terraform so that the provider dependancies would be imported
-Run
-        <b> terraform init </b>
-6. Plan the terraform file
-         <b> terraform plan -out (any variable file) </b>
-example       <b>   terraform plan -out out.terraform </b>
-7. Apply the plan file
-          <b> terraform apply (variablefile) </b>
-example         <b> terraform apply out.terraform </b>         
+# 4. Plan the terraform file
+$ terraform plan
+
+# 5. Apply the terraform file
+$ terraform apply  
+```       
+       
